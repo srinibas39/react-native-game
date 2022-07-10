@@ -2,7 +2,7 @@ import { useState } from "react"
 import { View, TextInput, StyleSheet, Alert } from "react-native"
 import { PrimaryButton } from "../components/PrimaryButton"
 
-export const StartGame = () => {
+export const StartGame = ({ confirmNoPick }) => {
   const [enteredValue, setEnteredValue] = useState("");
 
   const handleText = (text) => {
@@ -23,6 +23,9 @@ export const StartGame = () => {
         "Enter a postive no",
         [{ text: "okay", style: "destructive", onPress: handleReset }]
       )
+    }
+    else {
+      confirmNoPick(no);
     }
   }
 

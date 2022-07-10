@@ -2,11 +2,27 @@
 import { StyleSheet, ImageBackground } from 'react-native';
 import { StartGame } from './screen/StartGame';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useState } from 'react';
+import { Game } from './screen/Game';
 
 export default function App() {
+
+  const [confirmNo, setConfirmNo] = useState();
+
+  const confirmNoPick=(no)=>{
+     setConfirmNo(no)
+  }
+
+  let screen = <StartGame confirmNoPick={confirmNoPick}/>
+
+  if (confirmNo) {
+    screen = <Game />
+  }
+ 
+
   return (
     <LinearGradient colors={["#f1f5f9", "#dc2626"]} style={styles.appContainer} >
-      <StartGame />
+      {screen}
       <ImageBackground source={require("./assets/images/dice2.jpg")} resizeMode="cover" style={styles.ImageBackground}>
       </ImageBackground>
     </LinearGradient >
