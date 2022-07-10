@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Text, View, Alert } from "react-native"
 import { GuessedNumber } from "../components/GuessedNumber"
 import { PrimaryButton } from "../components/PrimaryButton"
@@ -6,7 +6,10 @@ import { Title } from "../components/Title"
 
 
 
-export const Game = ({ enteredNo }) => {
+export const Game = ({ enteredNo, gameOver }) => {
+
+
+
 
     let min = 1;
     let max = 100;
@@ -19,12 +22,19 @@ export const Game = ({ enteredNo }) => {
         else {
             return randNo;
         }
+       
     }
-    
+
     const initalGuess = generateNo(min, max, enteredNo)
     const [guessedNo, setGuessedNo] = useState(initalGuess)
 
-  
+    useEffect(() => {
+        if (guessedNo === enteredNo) {
+            gameOver();
+        }
+    }, [guessedNo])
+
+
 
     const guessHighOrLower = (type) => {
 

@@ -4,20 +4,32 @@ import { StartGame } from './screen/StartGame';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import { Game } from './screen/Game';
+import { EndGame } from './screen/EndGame';
 
 export default function App() {
 
   const [confirmNo, setConfirmNo] = useState();
+  const [isGameOver, setIsGameOver] = useState(true);
 
   const confirmNoPick = (no) => {
-    setConfirmNo(no)
+    setConfirmNo(no);
+    setIsGameOver(false);
+  }
+
+  const gameOver = () => {
+    setIsGameOver(true)
   }
 
   let screen = <StartGame confirmNoPick={confirmNoPick} />
 
   if (confirmNo) {
-    screen = <Game enteredNo={confirmNo} />
+    screen = <Game enteredNo={confirmNo} gameOver={gameOver} />
   }
+
+  if (confirmNo && isGameOver) {
+    screen = <EndGame />
+  }
+
 
 
   return (
