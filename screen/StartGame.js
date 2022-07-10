@@ -3,7 +3,7 @@ import { PrimaryButton } from "../components/PrimaryButton"
 
 export const StartGame = () => {
   return <View style={styles.inputContainer}>
-    <TextInput style={styles.input} />
+    <TextInput style={styles.input} maxLength={2}/>
     <PrimaryButton>Reset</PrimaryButton>
     <PrimaryButton>Confirm</PrimaryButton>
   </View>
@@ -11,20 +11,27 @@ export const StartGame = () => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    backgroundColor:"blue",
+    padding:16,
+    marginVertical:16,
     borderRadius:5,
+    backgroundColor:"#f1f5f9",
     // shadow for android
-    elevation:5,
+    elevation:4,
     // shadow for ios
     shadowColor:"black",
     shadowRadius:5,
     shadowOffset:{width:0,height:2},
-    shadowOpacity:0.25
-    
+    shadowOpacity:0.25 
   },
   input: {
-    borderWidth: 1,
-    borderColor: "#e11d48",
-
+    width:100,
+    fontSize:32,
+    fontWeight:"bold",
+    borderWidth:2,
+    padding:8,
+    margin:8,
+    borderColor:"#dc2626",
+    color:"#dc2626",
+    textAlign:"center"
   }
 })
