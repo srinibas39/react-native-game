@@ -3,6 +3,8 @@ import { Text, View, Alert } from "react-native"
 import { GuessedNumber } from "../components/GuessedNumber"
 import { PrimaryButton } from "../components/PrimaryButton"
 import { Title } from "../components/Title"
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { Feather } from '@expo/vector-icons';
 
 
 
@@ -66,8 +68,8 @@ export const Game = ({ enteredNo, gameOver }) => {
                 <Text>Higher or Lower?</Text>
             </View>
             <View>
-                <PrimaryButton handlePress={() => guessHighOrLower("lower")}>-</PrimaryButton>
-                <PrimaryButton handlePress={() => guessHighOrLower("higher")}>+</PrimaryButton>
+                <PrimaryButton handlePress={() => guessHighOrLower("lower")}><Feather name="minus" size={24} color="white" /></PrimaryButton>
+                <PrimaryButton handlePress={() => guessHighOrLower("higher")}><Ionicons name="add" size={24} color="white" /></PrimaryButton>
             </View>
 
         </View>
