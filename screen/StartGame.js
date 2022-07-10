@@ -13,14 +13,15 @@ export const StartGame = () => {
     setEnteredValue("");
   }
 
+
   const handleConfirm = () => {
-    const no = enteredValue;
+    const no = parseInt(enteredValue)
     if (isNaN(no) || no < 0 || no >= 100) {
       //  show Alert
       Alert.alert(
         "Invalid no",
         "Enter a postive no",
-        [{ text: "okay", style: "destructive", onPress: { handleReset } }]
+        [{ text: "okay", style: "destructive", onPress: handleReset }]
       )
     }
   }
@@ -30,7 +31,7 @@ export const StartGame = () => {
       <TextInput style={styles.input} maxLength={2} keyboardType="number-pad" value={enteredValue} onChangeText={handleText} />
     </View>
     <View>
-      <PrimaryButton handlePress={handleReset} >Reset</PrimaryButton>
+      <PrimaryButton handlePress={handleReset}>Reset</PrimaryButton>
       <PrimaryButton handlePress={handleConfirm}>Confirm</PrimaryButton>
     </View>
   </View>
