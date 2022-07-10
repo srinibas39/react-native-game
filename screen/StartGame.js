@@ -1,14 +1,37 @@
-import { View, TextInput, StyleSheet } from "react-native"
+import { useState } from "react"
+import { View, TextInput, StyleSheet, Alert } from "react-native"
 import { PrimaryButton } from "../components/PrimaryButton"
 
 export const StartGame = () => {
+  const [enteredValue, setEnteredValue] = useState("");
+
+  const handleText = (text) => {
+    setEnteredValue(text)
+  }
+
+  const handleReset = () => {
+    setEnteredValue("");
+  }
+
+  const handleConfirm = () => {
+    const no = enteredValue;
+    if (isNaN(no) || no < 0 || no >= 100) {
+      //  show Alert
+      Alert.alert(
+        "Invalid no",
+        "Enter a postive no",
+        [{ text: "okay", style: "destructive", onPress: { handleReset } }]
+      )
+    }
+  }
+
   return <View style={styles.inputContainer}>
     <View style={styles.inputBox}>
-      <TextInput style={styles.input} maxLength={2} keyboardType="number-pad" />
+      <TextInput style={styles.input} maxLength={2} keyboardType="number-pad" value={enteredValue} onChangeText={handleText} />
     </View>
     <View>
-      <PrimaryButton >Reset</PrimaryButton>
-      <PrimaryButton>Confirm</PrimaryButton>
+      <PrimaryButton handlePress={handleReset} >Reset</PrimaryButton>
+      <PrimaryButton handlePress={handleConfirm}>Confirm</PrimaryButton>
     </View>
   </View>
 }
@@ -31,17 +54,17 @@ const styles = StyleSheet.create({
     width: 100,
     fontSize: 32,
     fontWeight: "bold",
-    borderWidth: 2,
+    borderWidth: 4,
     padding: 8,
     margin: 8,
     borderColor: "#dc2626",
     color: "#dc2626",
     textAlign: "center"
   },
-  inputBox:{
-    flexDirection:"row",
-    justifyContent:"center",
-    alignItems:"center"
+  inputBox: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center"
   },
 
 })
