@@ -1,4 +1,5 @@
 import { View, Text, Pressable, StyleSheet } from "react-native"
+import { colors } from "../constants/colors"
 
 export const PrimaryButton = ({ children,handlePress }) => {
     return <View style={styles.BtnContainer}>
@@ -11,7 +12,7 @@ export const PrimaryButton = ({ children,handlePress }) => {
 const styles = StyleSheet.create({
     BtnContainer: {
         height: 48,
-        backgroundColor: "#dc2626",
+        backgroundColor: colors.primary,
         marginVertical: 16,
         borderRadius: 30,
         overflow: "hidden"
@@ -23,11 +24,11 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     BtnText: {
-        color: "#fff",
+        color:colors.secondary2 ,
         fontSize: 16,
         textAlign: "center",
     },
     isRipple: {
-        backgroundColor: "#f87171"
+        backgroundColor: colors.RippleColor
     }
 })

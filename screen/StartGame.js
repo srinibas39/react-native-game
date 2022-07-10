@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { View, TextInput, StyleSheet, Alert } from "react-native"
 import { PrimaryButton } from "../components/PrimaryButton"
+import { colors } from "../constants/colors";
 
 export const StartGame = ({ confirmNoPick }) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginVertical: 16,
     borderRadius: 5,
-    backgroundColor: "#fee2e2",
+    backgroundColor: colors.secondary,
     // shadow for android
     elevation: 4,
     // shadow for ios
@@ -61,8 +62,8 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     padding: 8,
     margin: 8,
-    borderColor: "#dc2626",
-    color: "#dc2626",
+    borderColor: colors.primary,
+    color: colors.primary,
     textAlign: "center"
   },
   inputBox: {
