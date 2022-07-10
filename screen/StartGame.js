@@ -3,7 +3,7 @@ import { PrimaryButton } from "../components/PrimaryButton"
 
 export const StartGame = () => {
   return <View style={styles.inputContainer}>
-    <TextInput style={styles.input} maxLength={2}/>
+    <TextInput style={styles.input} maxLength={2} keyboardType="number-pad"/>
     <PrimaryButton>Reset</PrimaryButton>
     <PrimaryButton>Confirm</PrimaryButton>
   </View>
