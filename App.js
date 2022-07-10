@@ -16,7 +16,7 @@ export default function App() {
   let screen = <StartGame confirmNoPick={confirmNoPick} />
 
   if (confirmNo) {
-    screen = <Game />
+    screen = <Game enteredNo={confirmNo} />
   }
 
 
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     flexDirection: "column",
+    paddingTop: 32
   },
   ImageBackground: {
     flex: 1,
