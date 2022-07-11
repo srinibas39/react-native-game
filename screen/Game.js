@@ -32,6 +32,11 @@ export const Game = ({ enteredNo, gameOver }) => {
     const [guessedNo, setGuessedNo] = useState(initalGuess)
 
     useEffect(() => {
+        min = 1;
+        max = 100;
+    }, [])
+
+    useEffect(() => {
         if (guessedNo === enteredNo) {
             gameOver();
         }
@@ -81,7 +86,7 @@ export const Game = ({ enteredNo, gameOver }) => {
 const styles = StyleSheet.create({
     gameContainer: {
         flexDirection: "column",
-        flex:1,
+        flex: 1,
         justifyContent: "space-evenly",
         alignItems: "center"
     },

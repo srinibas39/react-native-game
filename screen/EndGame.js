@@ -1,4 +1,5 @@
 import { Text, View, Image, StyleSheet } from "react-native";
+import { PrimaryButton } from "../components/PrimaryButton";
 import { Title } from "../components/Title";
 import { colors } from "../constants/colors";
 
@@ -11,6 +12,8 @@ export const EndGame = () => {
         <View>
             <Text style={styles.text}>Your phone needed <Text style={styles.boldText}>X</Text> turns to predict <Text style={styles.boldText}>Y</Text></Text>
         </View>
+
+        <PrimaryButton>Start Again</PrimaryButton>
     </View>
 }
 
