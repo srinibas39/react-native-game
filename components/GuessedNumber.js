@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     color: colors.secondary2,
     fontSize: 60,
     fontWeight: "bold",
+    fontFamily:"open-sans"
+    
 
 
   }

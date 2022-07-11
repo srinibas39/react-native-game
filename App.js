@@ -5,8 +5,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useState } from 'react';
 import { Game } from './screen/Game';
 import { EndGame } from './screen/EndGame';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
+
+
+
 
 export default function App() {
+
+
 
   const [confirmNo, setConfirmNo] = useState();
   const [isGameOver, setIsGameOver] = useState(true);
@@ -30,6 +37,14 @@ export default function App() {
     screen = <EndGame />
   }
 
+  const [fontsLoaded] = useFonts({
+    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
 
 
   return (
