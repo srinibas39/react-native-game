@@ -49,7 +49,7 @@ export default function App() {
 
   return (
     <LinearGradient colors={["#f1f5f9", "#dc2626"]} style={styles.appContainer} >
-      <SafeAreaView>{screen}</SafeAreaView>
+      <SafeAreaView style={styles.screen}>{screen}</SafeAreaView>
       <ImageBackground source={require("./assets/images/dice2.jpg")} resizeMode="cover" style={styles.ImageBackground}></ImageBackground>
     </LinearGradient >
   );
@@ -65,6 +65,9 @@ const styles = StyleSheet.create({
   ImageBackground: {
     flex: 1,
     opacity: 0.15
+  },
+  screen:{
+    height:"100%"
   }
 })
 

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import { Text, View, Alert } from "react-native"
+import { Text, View, Alert, StyleSheet } from "react-native"
 import { GuessedNumber } from "../components/GuessedNumber"
 import { PrimaryButton } from "../components/PrimaryButton"
 import { Title } from "../components/Title"
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Feather } from '@expo/vector-icons';
+import { colors } from "../constants/colors"
 
 
 
@@ -24,7 +25,7 @@ export const Game = ({ enteredNo, gameOver }) => {
         else {
             return randNo;
         }
-       
+
     }
 
     const initalGuess = generateNo(min, max, enteredNo)
@@ -60,12 +61,12 @@ export const Game = ({ enteredNo, gameOver }) => {
 
 
 
-    return <View>
+    return <View style={styles.gameContainer}>
         <Title>Your Guess!!!</Title>
         <GuessedNumber>{guessedNo}</GuessedNumber>
-        <View>
-            <View>
-                <Text>Higher or Lower?</Text>
+        <View style={styles.container}>
+            <View >
+                <Text style={styles.Text}>Higher or Lower?</Text>
             </View>
             <View>
                 <PrimaryButton handlePress={() => guessHighOrLower("lower")}><Feather name="minus" size={24} color="white" /></PrimaryButton>
@@ -75,3 +76,27 @@ export const Game = ({ enteredNo, gameOver }) => {
         </View>
     </View>
 }
+
+
+const styles = StyleSheet.create({
+    gameContainer: {
+        flexDirection: "column",
+        flex:1,
+        justifyContent: "space-evenly",
+        alignItems: "center"
+    },
+
+    container: {
+        borderWidth: 4,
+        padding: 16,
+        borderColor: colors.secondary2,
+        borderRadius: 10
+    },
+    Text: {
+        color: colors.secondary2,
+        fontSize: 24,
+        textAlign: "center",
+        fontFamily: "open-sans-bold"
+
+    }
+})

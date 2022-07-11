@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary,
         marginVertical: 16,
         borderRadius: 30,
-        overflow: "hidden"
+        overflow: "hidden",
+        borderWidth: 2,
+        borderColor:colors.secondary2
     },
     BtnPressableContainer: {
         height: "100%",
