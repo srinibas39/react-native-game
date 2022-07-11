@@ -1,9 +1,12 @@
 import { useState } from "react"
-import { View, TextInput, StyleSheet, Alert } from "react-native"
+import { View, TextInput, StyleSheet, Alert, useWindowDimensions, KeyboardAvoidingView, ScrollView } from "react-native"
 import { PrimaryButton } from "../components/PrimaryButton"
 import { colors } from "../constants/colors";
 
 export const StartGame = ({ confirmNoPick }) => {
+
+  const { width, height } = useWindowDimensions();
+
   const [enteredValue, setEnteredValue] = useState("");
 
   const handleText = (text) => {
@@ -30,18 +33,29 @@ export const StartGame = ({ confirmNoPick }) => {
     }
   }
 
-  return <View style={styles.inputContainer}>
-    <View style={styles.inputBox}>
-      <TextInput style={styles.input} maxLength={2} keyboardType="number-pad" value={enteredValue} onChangeText={handleText} />
-    </View>
-    <View>
-      <PrimaryButton handlePress={handleReset}>Reset</PrimaryButton>
-      <PrimaryButton handlePress={handleConfirm}>Confirm</PrimaryButton>
-    </View>
-  </View>
+  const marginDist = width < 420 ? 32 : 100
+
+  return <ScrollView style={styles.screen}>
+    <KeyboardAvoidingView style={styles.screen} behavior="position">
+      <View style={[styles.inputContainer, { marginTop: marginDist }]}>
+        <View style={styles.inputBox}>
+          <TextInput style={styles.input} maxLength={2} keyboardType="number-pad" value={enteredValue} onChangeText={handleText} />
+        </View>
+        <View>
+          <PrimaryButton handlePress={handleReset}>Reset</PrimaryButton>
+          <PrimaryButton handlePress={handleConfirm}>Confirm</PrimaryButton>
+        </View>
+      </View>
+    </KeyboardAvoidingView>
+  </ScrollView>
 }
 
+
+
 const styles = StyleSheet.create({
+  screen:{
+    flex: 1
+  },
   inputContainer: {
     padding: 16,
     marginVertical: 16,

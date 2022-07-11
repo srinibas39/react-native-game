@@ -52,12 +52,7 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />
   }
-
   
-
-
-
-
   return (
     <LinearGradient colors={["#f1f5f9", "#dc2626"]} style={styles.appContainer} >
       <SafeAreaView style={styles.screen}>{screen}</SafeAreaView>

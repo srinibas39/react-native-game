@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Text, View, Alert, StyleSheet } from "react-native"
+import { Text, View, Alert, StyleSheet, useWindowDimensions } from "react-native"
 import { GuessedNumber } from "../components/GuessedNumber"
 import { PrimaryButton } from "../components/PrimaryButton"
 import { Title } from "../components/Title"
@@ -12,7 +12,7 @@ import { colors } from "../constants/colors"
 export const Game = ({ enteredNo, gameOver }) => {
 
 
-
+    const { height, width } = useWindowDimensions()
 
     let min = 1;
     let max = 100;
@@ -64,26 +64,41 @@ export const Game = ({ enteredNo, gameOver }) => {
         setGuessedNo(newRandomNo)
     }
 
+    let content = <View style={styles.container}>
+        <View >
+            <Text style={styles.Text}>Higher or Lower?</Text>
+        </View>
+        <View>
+            <PrimaryButton handlePress={() => guessHighOrLower("lower")}><Feather name="minus" size={24} color="white" /></PrimaryButton>
+            <PrimaryButton handlePress={() => guessHighOrLower("higher")}><Ionicons name="add" size={24} color="white" /></PrimaryButton>
+        </View>
+
+    </View>;
+
+    if (width > 500) {
+      content=<View>
+          <View style={styles.landContainer}>
+            <PrimaryButton handlePress={() => guessHighOrLower("lower")}><Feather name="minus" size={24} color="white" /></PrimaryButton>
+            <PrimaryButton handlePress={() => guessHighOrLower("higher")}><Ionicons name="add" size={24} color="white" /></PrimaryButton>
+        </View>
+      </View>
+    }
+
 
 
     return <View style={styles.gameContainer}>
         <Title>Your Guess!!!</Title>
         <GuessedNumber>{guessedNo}</GuessedNumber>
-        <View style={styles.container}>
-            <View >
-                <Text style={styles.Text}>Higher or Lower?</Text>
-            </View>
-            <View>
-                <PrimaryButton handlePress={() => guessHighOrLower("lower")}><Feather name="minus" size={24} color="white" /></PrimaryButton>
-                <PrimaryButton handlePress={() => guessHighOrLower("higher")}><Ionicons name="add" size={24} color="white" /></PrimaryButton>
-            </View>
-
-        </View>
+         {content}
     </View>
 }
 
 
 const styles = StyleSheet.create({
+    landContainer:{
+       flexDirection:"row",
+       justifyContent:"space-between"
+    },
     gameContainer: {
         flexDirection: "column",
         flex: 1,

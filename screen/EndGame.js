@@ -1,4 +1,4 @@
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, Dimensions } from "react-native";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { Title } from "../components/Title";
 import { colors } from "../constants/colors";
@@ -17,32 +17,35 @@ export const EndGame = () => {
     </View>
 }
 
+const deviceWidth = Dimensions.get("window").width;
+
+
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flexDirection: "column",
-        flex:1,
+        flex: 1,
         justifyContent: "space-evenly",
         alignItems: "center"
     },
     imageCon: {
-        height: 300,
-        width: 300,
-        borderRadius:300,
+        height: deviceWidth < 410 ? 200 : 300,
+        width: deviceWidth < 410 ? 200 : 300,
+        borderRadius: deviceWidth < 410 ? 100 : 150,
         margin: 16,
-        overflow:"hidden"
+        overflow: "hidden"
     },
     endGameImage: {
         height: "100%",
         width: "100%",
     },
-    text:{
-      fontFamily:"open-sans",
-      color:colors.secondary2,
-      fontSize:32,
+    text: {
+        fontFamily: "open-sans",
+        color: colors.secondary2,
+        fontSize: 32,
     },
-    boldText:{
-        fontFamily:"open-sans-bold",
-        color:"#7f1d1d",
+    boldText: {
+        fontFamily: "open-sans-bold",
+        color: "#7f1d1d",
 
     }
 
